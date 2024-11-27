@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>หัวใจเต้น + ปุ่มคลิก</title>
+    <!-- นำเข้าฟอนต์น่ารักจาก Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Mali:wght@300;500;700&display=swap" rel="stylesheet">
+    <style>
+        /* ตั้งค่าพื้นหลัง */
+        body {
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            background: radial-gradient(circle, #ff9a9e, #fad0c4, #fbc2eb);
+            font-family: 'Mali', sans-serif; /* ใช้ฟอนต์ Mali */
+            text-align: center;
+        }
+
+        /* คำถาม */
+        .question {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: #ff4081;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        /* สร้างหัวใจ */
+        .heart {
+            position: relative;
+            width: 120px;
+            height: 120px;
+            background-color: #ff4d6d;
+            transform: rotate(-45deg);
+            animation: heartbeat 1.5s infinite ease-in-out;
+            margin-top: 20px;
+            border-radius: 10%;
+            margin-bottom: 30px; /* เพิ่มระยะห่างระหว่างหัวใจกับปุ่ม */
+        }
+
+        .heart::before,
+        .heart::after {
+            content: "";
+            position: absolute;
+            width: 120px;
+            height: 120px;
+            background-color: #ff4d6d;
+            border-radius: 50%;
+            top: -60px;
+            left: 0;
+        }
+
+        .heart::after {
+            top: 0;
+            left: 60px;
+        }
+
+        /* อนิเมชันหัวใจเต้น */
+        @keyframes heartbeat {
+            0%, 100% {
+                transform: scale(1) rotate(-45deg);
+            }
+            30% {
+                transform: scale(1.2) rotate(-45deg);
+            }
+            60% {
+                transform: scale(0.9) rotate(-45deg);
+            }
+        }
+
+        /* ปุ่มคลิก */
+        .button {
+            padding: 12px 25px;
+            font-size: 1.4rem;
+            font-weight: bold;
+            color: white;
+            background-color: #ff80ab;
+            border: none;
+            border-radius: 15px;
+            cursor: pointer;
+            box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+            margin: 10px;
+        }
+
+        .button:hover {
+            background-color: #ff66b2;
+            transform: scale(1.1);
+        }
+
+        /* ข้อความที่ปรากฏ */
+        .response {
+            margin-top: 20px;
+            font-size: 1.5rem;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <!-- คำถาม -->
+    <div class="question">มุตุ๋นนคิดถึงเค้าอยู่อ่ะเป่า? คิดดีๆไม่ต้องลังเล คิ-คิ!</div>
+
+    <!-- หัวใจ -->
+    <div class="heart"></div>
+
+    <!-- ปุ่มคำตอบ -->
+    <div id="answerButtons">
+        <button class="button" onclick="showResponse(true)">คิดถึงสุดๆแฟนน่ารักขนาดนี้ไม่ให้คิดถึงได้ไงง 😻💖</button>
+        <button class="button" onclick="showResponse(false)">ไม่คิดถึงก็บ้าแล้ว 😼💔</button>
+    </div>
+
+    <!-- ข้อความคำตอบ -->
+    <div class="response" id="response"></div>
+
+    <script>
+        // ฟังก์ชันแสดงข้อความตอบกลับ
+        function showResponse(love) {
+            const response = document.getElementById('response');
+            if (love) {
+                response.innerHTML = "ฮ๊อปป ตะไมใจเราตรงกันขนาดนี้ละเนี้ยยย คิดถึงมุตุ๋นที่สู๊สสสสส 😽💖";
+            } else {
+                response.innerHTML = "กดผิดอ่ะเป่าไอ่มุตุ๋น 😾";
+            }
+        }
+    </script>
+</body>
+</html>
